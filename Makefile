@@ -1,6 +1,4 @@
-NAME 			= libftprintf.a
-LIBFT_PATH 		= LIBFT-42
-LIBFT 			= $(LIBFT_PATH)/libft.a
+NAME = libftprintf.a
 
 SOURCES =				\
 	ft_printf.c			\
@@ -11,27 +9,21 @@ SOURCES =				\
 OBJECTS = $(SOURCES:.c=.o)
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I$(LIBFT_PATH)
+CFLAGS = -Wall -Wextra -Werror
 
-all: $(LIBFT) $(NAME)
+all: $(NAME)
 
-$(LIBFT):
-	@make -C $(LIBFT_PATH)
-
-$(NAME): $(OBJECTS) $(LIBFT)
-	cp $(LIBFT) $(NAME)
-	$(AR) -rs $(NAME) $(OBJECTS)
+$(NAME):	$(OBJECTS)
+			$(AR) -r $(NAME) $(OBJECTS)
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	@make -C $(LIBFT_PATH) clean
-	rm -f $(OBJECTS)
+		rm -f $(OBJECTS)
 
-fclean: clean
-	@make -C $(LIBFT_PATH) fclean
-	rm -f $(NAME)
+fclean:	clean
+		rm -f $(NAME)
 
 re: fclean all
 
