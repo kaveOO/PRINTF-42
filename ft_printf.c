@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 22:02:36 by albillie          #+#    #+#             */
-/*   Updated: 2024/10/27 06:40:05 by albillie         ###   ########.fr       */
+/*   Updated: 2024/10/27 13:06:59 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@ int	ft_format_handler(va_list args, char str)
 
 	print_length = 0;
 	if (str == 'c')
-		print_length += ft_printchar(va_arg(args, int));
+		print_length += ft_putchar(va_arg(args, int));
 	else if (str == 's')
 		print_length += ft_printstr(va_arg(args, char *));
-/* 	else if (str == 'p')
-		print_length += // Function for pointer adress here
 	else if (str == 'i' || str == 'd')
 		print_length += ft_printnbr(va_arg(args, int));
+	else if (str == '%')
+		print_length += ft_putchar('%');
 	else if (str == 'u')
-		print_length += // Print unsigned decimal integer need function
+		print_length += ft_print_unsigned(va_arg(args, unsigned int));
+	else if (str == 'p')
+		print_length += ft_print_pointer(va_arg(args, void*));
 	else if (str == 'x')
-		print_length += // Print unsigned in lowercase hexadecimal
+		print_length += ft_print_hex_low(va_arg(args, unsigned int));
 	else if (str == 'X')
-		print_length += // Print unsigned in uppercase hexadecimal
-	else if (str == "%%")
-		print_length += write(1, '%', 1);
- */
+		print_length += ft_print_hex_up(va_arg(args, unsigned int));
+
 	return (print_length);
 }
 
@@ -58,14 +58,18 @@ int	ft_printf(const char *str, ...)
 			i++;
 		}
 		else
-			print_length += ft_printchar(str[i]);
+		{
+			print_length += ft_putchar(str[i]);
+		}
 		i++;
 	}
 	va_end(args);
 	return (print_length);
 }
 
-int main()
+/* int main()
 {
-	ft_printf("%d", "            j'adore !");
-}
+	char *string;
+
+	ft_printf("%p", &string);
+} */
