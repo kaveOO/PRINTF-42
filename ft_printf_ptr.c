@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 04:56:05 by albillie          #+#    #+#             */
-/*   Updated: 2024/10/27 11:01:15 by albillie         ###   ########.fr       */
+/*   Updated: 2024/10/27 13:20:49 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,14 @@ void	ft_putnbr_hex(unsigned long num)
 	}
 	else
 	{
-		ft_putchar((num < 10) ? (num + '0') : (num - 10 + 'a'));
+		if (num < 10)
+		{
+			ft_putchar(num + '0');
+		}
+		else
+		{
+			ft_putchar(num - 10 + 'a');
+		}
 	}
 }
 
@@ -32,15 +39,13 @@ int	ft_print_pointer(void *ptr)
 
 	if (ptr == 0)
 	{
-		return (ft_printstr("(nil)"));
+		return (ft_print_str("(nil)"));
 	}
 	address = (unsigned long) ptr;
 	print_length = 0;
-
-	ft_printstr("0x");
+	ft_print_str("0x");
 	print_length += 2;
 	ft_putnbr_hex(address);
-
 	while (address)
 	{
 		address /= 16;
@@ -48,7 +53,6 @@ int	ft_print_pointer(void *ptr)
 	}
 	return (print_length);
 }
-
 
 /* int main()
 {

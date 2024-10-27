@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 23:33:04 by albillie          #+#    #+#             */
-/*   Updated: 2024/10/27 13:04:24 by albillie         ###   ########.fr       */
+/*   Updated: 2024/10/27 13:20:09 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_putchar(int c)
 	return (1);
 }
 
-int	ft_printstr(char *str)
+int	ft_print_str(char *str)
 {
 	size_t	i;
 
@@ -37,45 +37,45 @@ int	ft_printstr(char *str)
 	return (i);
 }
 
-int ft_print_nbr(int nbr)
+int	ft_print_nbr(int nbr)
 {
-    int	print_length;
+	int	print_length;
 
-    print_length = 0;
-    if (nbr == -2147483648)
+	print_length = 0;
+	if (nbr == -2147483648)
 	{
-        return (ft_printstr("-2147483648"));
+		return (ft_print_str("-2147483648"));
 	}
-    if (nbr < 0)
-    {
-        print_length += ft_putchar('-');
-        nbr = -nbr;
-    }
-    if (nbr >= 10)
-    {
-        print_length += ft_printnbr(nbr / 10);
-        print_length += ft_putchar((nbr % 10) + '0');
-    }
-    else
+	if (nbr < 0)
 	{
-        print_length += ft_putchar(nbr + '0');
+		print_length += ft_putchar('-');
+		nbr = -nbr;
 	}
-    return (print_length);
+	if (nbr >= 10)
+	{
+		print_length += ft_print_nbr(nbr / 10);
+		print_length += ft_putchar((nbr % 10) + '0');
+	}
+	else
+	{
+		print_length += ft_putchar(nbr + '0');
+	}
+	return (print_length);
 }
 
 int	ft_print_unsigned(unsigned int n)
 {
-    int	print_length;
+	int	print_length;
 
-    print_length = 0;
-    if (n >= 10)
-    {
-        print_length += ft_printunsigned(n / 10);
-        print_length += ft_putchar((n % 10) + '0');
-    }
-    else
+	print_length = 0;
+	if (n >= 10)
 	{
-        print_length += ft_putchar(n + '0');
+		print_length += ft_print_unsigned(n / 10);
+		print_length += ft_putchar((n % 10) + '0');
 	}
-    return (print_length);
+	else
+	{
+		print_length += ft_putchar(n + '0');
+	}
+	return (print_length);
 }

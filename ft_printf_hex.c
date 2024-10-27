@@ -6,7 +6,7 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:19:07 by albillie          #+#    #+#             */
-/*   Updated: 2024/10/27 13:01:49 by albillie         ###   ########.fr       */
+/*   Updated: 2024/10/27 13:11:18 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	ft_print_hex_low(unsigned int num)
 	string_length += write(1, &hex[num % 16], 1);
 	return (string_length);
 }
+
 int	ft_print_hex_up(unsigned int num)
 {
 	size_t	string_length;
@@ -47,4 +48,3 @@ int	ft_print_hex_up(unsigned int num)
 
 	ft_printf("%X\n", a);
 } */
-
