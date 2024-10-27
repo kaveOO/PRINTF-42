@@ -6,12 +6,11 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 22:02:36 by albillie          #+#    #+#             */
-/*   Updated: 2024/10/27 13:20:37 by albillie         ###   ########.fr       */
+/*   Updated: 2024/10/27 23:19:11 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "LIBFT-42/libft.h"
 
 int	ft_format_handler(va_list args, char str)
 {
@@ -22,18 +21,18 @@ int	ft_format_handler(va_list args, char str)
 		print_length += ft_putchar(va_arg(args, int));
 	else if (str == 's')
 		print_length += ft_print_str(va_arg(args, char *));
-	else if (str == 'i' || str == 'd')
-		print_length += ft_print_nbr(va_arg(args, int));
-	else if (str == '%')
-		print_length += ft_putchar('%');
-	else if (str == 'u')
-		print_length += ft_print_unsigned(va_arg(args, unsigned int));
 	else if (str == 'p')
 		print_length += ft_print_pointer(va_arg(args, void *));
+	else if (str == 'd' || str == 'i')
+		print_length += ft_print_nbr(va_arg(args, int));
+	else if (str == 'u')
+		print_length += ft_print_unsigned(va_arg(args, unsigned int));
 	else if (str == 'x')
 		print_length += ft_print_hex_low(va_arg(args, unsigned int));
 	else if (str == 'X')
 		print_length += ft_print_hex_up(va_arg(args, unsigned int));
+	else if (str == '%')
+		print_length += ft_putchar('%');
 	return (print_length);
 }
 
@@ -65,7 +64,7 @@ int	ft_printf(const char *str, ...)
 
 /* int main()
 {
-	char *string;
+	int num = 14;
 
-	ft_printf("%p", &string);
+	ft_printf("%c\n%s\n%i\n%d\n", 'c', "string", num, num);
 } */

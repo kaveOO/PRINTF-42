@@ -6,12 +6,11 @@
 /*   By: albillie <albillie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 23:33:04 by albillie          #+#    #+#             */
-/*   Updated: 2024/10/27 13:20:09 by albillie         ###   ########.fr       */
+/*   Updated: 2024/10/27 23:19:06 by albillie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "LIBFT-42/libft.h"
 
 int	ft_putchar(int c)
 {
